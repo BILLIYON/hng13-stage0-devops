@@ -1,80 +1,60 @@
-:rocket: DevOps Intern Stage 1 Task — Automated Deployment Bash Script
-Hey Cool Keeds! :wave:
- This stage is all about proving your DevOps skills — automation, deployment, and reliability. You’ll be building something practical that mirrors real-world DevOps workflows. :muscle:
-Task Explainer Video - https://vt.tiktok.com/ZSUgAWyVj/
-:dart: Task Objective
-Develop a robust, production-grade Bash script that automates the setup, deployment, and configuration of a Dockerized application on a remote Linux server.
+:rocket: DevOps Task (HNG13) - Stage 0 :cycy-siren:
+:mag_right: Overview
+Hi Cool Keeds :rocket: Welcome to your first DevOps challenge!
+This task will test your ability to deploy a web server and manage a GitHub repository.
+It’s designed to mimic real-world DevOps work you’ll encounter in production.
+:dart: Objectives
+By the end of this assignment, you should be able to:
+Set up and manage a GitHub workflow
+Deploy and configure a live NGINX web server
+Serve a custom webpage accessible from the internet
+TASK EXPLAINER VIDEO : https://vt.tiktok.com/ZSUHFA4hK/
 :hammer_and_wrench: Task Breakdown
-Your script (deploy.sh) should be a single, executable Bash file that performs all actions in sequence, with proper error handling, validation, and logging throughout.
-1. Collect Parameters from User Input
-Prompt for and validate:
-Git Repository URL
-Personal Access Token (PAT)
-Branch name (optional; defaults to main)
-Remote server SSH details:
-Username
-Server IP address
-SSH key path
-Application port (internal container port)
-2. Clone the Repository
-Authenticate and clone the repo using the PAT.
-If it already exists, pull the latest changes instead.
-Switch to the specified branch.
-3. Navigate into the Cloned Directory
-Automatically cd into the cloned project folder.
-Verify that a Dockerfile or docker-compose.yml exists.
-Log success or failure.
-4. SSH into the Remote Server
-Establish SSH connection with provided credentials.
-Perform connectivity checks (ping or SSH dry-run).
-Execute remaining commands remotely (ssh user@ip "commands...").
-5. Prepare the Remote Environment
-On the remote host:
-Update system packages.
-Install Docker, Docker Compose, and Nginx (if missing).
-Add user to Docker group (if needed).
-Enable and start services.
-Confirm installation versions.
-6. Deploy the Dockerized Application
-Transfer project files (via scp or rsync).
-Navigate to project directory.
-Build and run containers (docker build + docker run or docker-compose up -d).
-Validate container health and logs.
-Confirm app accessibility on the specified port.
-7. Configure Nginx as a Reverse Proxy
-Dynamically create or overwrite Nginx config.
-Forward HTTP (port 80) traffic to container’s internal port.
-Ensure SSL readiness (optional self-signed cert or Certbot placeholder).
-Test config and reload Nginx.
-8. Validate Deployment
-Confirm that:
-Docker service is running.
-The target container is active and healthy.
-Nginx is proxying correctly.
-Test endpoint using curl or wget locally and remotely.
-9. Implement Logging and Error Handling
-Log all actions (success/failure) to a timestamped log file (e.g., deploy_YYYYMMDD.log).
-Include trap functions for unexpected errors.
-Use meaningful exit codes per stage.
-10. Ensure Idempotency and Cleanup
-Script should safely re-run without breaking existing setups.
-Gracefully stop/remove old containers before redeployment.
-Prevent duplicate Docker networks or Nginx configs.
-(Optional) Include a --cleanup flag to remove all deployed resources.
-:package: Submission Guidelines
-Push your Bash script (deploy.sh) and a clear README.md to your GitHub repo.
-Script must be POSIX-compliant and executable (chmod +x deploy.sh).
-Do not use configuration management tools like Ansible or Terraform.
+Part 1: GitHub Setup
+Fork the repo: hng13-stage0-devops
+In your fork:
+Add a README.md to the main branch containing:
+Your name
+Your Slack username
+A short project description
+Your server IP/domain (add this after deployment)
+Part 2: Web Server Deployment
+You will deploy a server using NGINX.
+Requirements:
+Edit the provided index.html to include: Welcome to DevOps Stage 0 - [Your Name]/[SlackUsername]
+Successfully deployed on [Platform Name]
+Deployed: [Date]
+Place this file at: /var/www/html/index.html
+Run on default HTTP port (80)
+Display your custom content when accessed via browser
+Part 3: Deployment Requirements
+Deploy your server on any cloud provider (AWS, GCP, Azure, DigitalOcean, Linode, Vultr, etc.)
+Public VPS or even a local machine with port forwarding is acceptable
+Must be publicly accessible at: http://your-server-ip/
+:warning: Deployment rules:
+Only port 80 allowed (no :8080, :3000, etc.)
+Server must stay live until grading is complete
+Must display your custom HTML
 :pushpin: Submission Process
 Verify your server works (test from multiple networks if possible)
-Go to the #track-devops and stage-1-devops channel in Slack
-Run the command:  “/stage-one-devops”
+Go to the #track-devops channel in Slack
+Run the command:  “/stage-zero-devops”
 Submit:
-Your fullname and
-Your github repo url  in this format https://github.com/username/repo
+Your server IP (http://your-ip-address/)
+Your GitHub repo link
  5.  Please check Thanos bot to see the error message or success message after each attempt.
+:white_check_mark: DOs & :x: DON’Ts
+DO:
+:white_check_mark: Test accessibility from external networks
+:white_check_mark: Keep your server running until graded
+DON’T:
+:x: Don’t use ports other than 80
+:x: Don’t submit localhost/private IPs
+:x: Don’t copy others’ work
+:x: Don’t shut down your server right after submission
 :alarm_clock: Deadline & Attempts
-Deadline: 11:59 PM GMT, 22nd October 2025
-Attempts Allowed: 5
-Late Submissions: :x: Not accepted
-:gear: This task simulates real DevOps work. Employers at HNG are looking for interns who can deploy, document, and deliver. You got this, cool Keeds! :sunglasses:
+Deadline: 11:59pm, 18/10/2025 
+Attempts allowed: 5
+Late submissions: :x: Not accepted
+Remember: This task simulates real DevOps work. Employers at HNG are looking for interns who can deploy, document, and deliver. Show them what you can do!
+You got this cool Keeds @channel
